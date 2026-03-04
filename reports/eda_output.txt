@@ -1,0 +1,65 @@
+============================================================
+EXPLORATORY DATA ANALYSIS
+============================================================
+
+train shape: (1500, 18)
+test shape:  (3500, 17)
+
+class balance: positive=778 (51.87%), negative=722 (48.13%)
+
+--- missing values (train) ---
+  comorbidity: 788 (52.5%)
+
+--- missing values (test) ---
+  comorbidity: 1900 (54.3%)
+
+--- numeric features by class ---
+  age: mean(neg)=43.87, mean(pos)=44.02, cohen_d=0.006
+  oxygen_level: mean(neg)=93.15, mean(pos)=91.07, cohen_d=-0.481
+  body_temperature: mean(neg)=38.49, mean(pos)=38.47, cohen_d=-0.012
+
+--- train vs test numeric shift ---
+  age: train_mean=43.95 (std=25.29), test_mean=44.56 (std=25.68), delta=0.60
+  oxygen_level: train_mean=92.07 (std=4.33), test_mean=91.90 (std=4.32), delta=-0.17
+  body_temperature: train_mean=38.48 (std=1.46), test_mean=38.51 (std=1.42), delta=0.03
+
+  NOTE: train oxygen_level/body_temperature have many decimal places
+  e.g. train oxygen_level[0] = 98.5433231409651
+       test  oxygen_level[0] = 98
+
+--- categorical distributions ---
+
+  gender:
+    Female                train=0.511  test=0.501  diff=-0.010
+    Male                  train=0.489  test=0.499  diff=+0.010
+
+  comorbidity:
+    Asthma                train=0.104  test=0.097  diff=-0.007
+    Diabetes              train=0.223  test=0.196  diff=-0.028
+    Heart Disease         train=0.147  test=0.164  diff=+0.017
+    MISSING               train=0.525  test=0.543  diff=+0.018
+
+--- symptom prevalence by class ---
+  fever                      neg=0.479  pos=0.654  diff=+0.175
+  dry_cough                  neg=0.374  pos=0.629  diff=+0.255
+  sore_throat                neg=0.446  pos=0.449  diff=+0.003
+  fatigue                    neg=0.587  pos=0.546  diff=-0.041
+  headache                   neg=0.427  pos=0.469  diff=+0.043
+  shortness_of_breath        neg=0.262  pos=0.470  diff=+0.209
+  loss_of_smell              neg=0.233  pos=0.438  diff=+0.206
+  loss_of_taste              neg=0.345  pos=0.316  diff=-0.029
+
+--- duplicate feature rows ---
+  exact duplicate feature rows: 0
+
+--- comorbidity vs covid_result ---
+covid_result     0    1  total  pos_rate
+comorbidity                             
+Asthma          73   83    156  0.532051
+Diabetes       156  179    335  0.534328
+Heart Disease  110  111    221  0.502262
+MISSING        383  405    788  0.513959
+
+============================================================
+EDA DONE
+============================================================

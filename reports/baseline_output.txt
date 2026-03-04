@@ -1,0 +1,40 @@
+============================================================
+BASELINE CROSS-VALIDATION
+============================================================
+
+Logistic Regression (OOF):
+  accuracy = 0.7440
+  AUC      = 0.8088
+  logloss  = 0.5378
+
+CatBoost (OOF, native categoricals):
+  accuracy = 0.7307
+  AUC      = 0.7944
+  logloss  = 0.5607
+
+--- threshold sweep (CatBoost OOF probs) ---
+  acc @ 0.50 = 0.7307
+  best threshold = 0.42, acc = 0.7320
+  -> threshold tuning gives +0.0013 over default 0.5
+
+--- CatBoost feature importance (last fold) ---
+  oxygen_level                    17.96
+  age                             11.23
+  body_temperature                10.85
+  dry_cough                        8.93
+  comorbidity                      8.32
+  contact_with_patient             8.13
+  loss_of_smell                    6.65
+  shortness_of_breath              6.55
+  fever                            5.66
+  gender                           3.39
+  headache                         2.86
+  chest_pain                       2.17
+  fatigue                          2.12
+  travel_history                   2.06
+  sore_throat                      1.58
+  loss_of_taste                    1.53
+
+============================================================
+BASELINE DONE
+============================================================
