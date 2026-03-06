@@ -71,8 +71,8 @@ print(f"       test  oxygen_level[0] = {test['oxygen_level'].iloc[0]}")
 print("\n--- categorical distributions ---")
 for col in CAT_COLS:
     print(f"\n  {col}:")
-    tr_counts = train[col].fillna("MISSING").value_counts(normalize=True).sort_index()
-    te_counts = test[col].fillna("MISSING").value_counts(normalize=True).sort_index()
+    tr_counts = train[col].fillna("None").value_counts(normalize=True).sort_index()
+    te_counts = test[col].fillna("None").value_counts(normalize=True).sort_index()
     all_vals = sorted(set(tr_counts.index) | set(te_counts.index))
     for v in all_vals:
         tp = tr_counts.get(v, 0)
@@ -104,7 +104,7 @@ if n_dup > 0:
 
 # ---- comorbidity x class ----
 print("\n--- comorbidity vs covid_result ---")
-ct = pd.crosstab(train["comorbidity"].fillna("MISSING"), train[TARGET_COL])
+ct = pd.crosstab(train["comorbidity"].fillna("None"), train[TARGET_COL])
 ct["total"] = ct.sum(axis=1)
 ct["pos_rate"] = ct[1] / ct["total"]
 print(ct.to_string())

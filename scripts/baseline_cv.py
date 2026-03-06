@@ -19,7 +19,7 @@ from config import TRAIN_PATH, ID_COL, TARGET_COL, NUM_COLS, SEED
 
 train = pd.read_csv(TRAIN_PATH)
 train[TARGET_COL] = train[TARGET_COL].astype(int)
-train["comorbidity"] = train["comorbidity"].fillna("Unknown")
+train["comorbidity"] = train["comorbidity"].fillna("None")
 
 y = train[TARGET_COL].values
 X = train.drop(columns=[ID_COL, TARGET_COL])

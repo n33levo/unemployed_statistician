@@ -37,7 +37,7 @@ All files use `id` as the identifier column (**not** `patient_id` -- the course 
 
 1. **train numerics are weirdly precise**: oxygen_level in train looks like `98.5433231409651`, but in test its just `98`. tree models handle this fine but be aware if doing anything w/ distances or linear models
 
-2. **comorbidity is 53% missing in train**: don't drop these rows. fill w/ "Unknown" and treat as a 5th category
+2. **comorbidity is 53% missing in train**: don't drop these rows. fill w/ "None" -- these are patients with no comorbidity, not actually missing data. treat it as a regular category alongside Diabetes, Asthma, Heart Disease
 
 3. **the column is `id`, not `patient_id`**: the sample csv from the course materials uses `patient_id` but the actual competition csvs use `id`. this has caused bugs before
 

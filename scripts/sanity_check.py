@@ -19,10 +19,10 @@ SAMPLE_PATH = BASE_DIR / "docs" / "sample_covid19_data.csv"
 
 train = pd.read_csv(TRAIN_PATH)
 train[TARGET_COL] = train[TARGET_COL].astype(int)
-train["comorbidity"] = train["comorbidity"].fillna("Unknown")
+train["comorbidity"] = train["comorbidity"].fillna("None")
 
 test = pd.read_csv(TEST_PATH)
-test["comorbidity"] = test["comorbidity"].fillna("Unknown")
+test["comorbidity"] = test["comorbidity"].fillna("None")
 
 sample = pd.read_csv(SAMPLE_PATH)
 

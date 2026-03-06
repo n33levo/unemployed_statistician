@@ -10,7 +10,7 @@ i ran a basic EDA, a baseline model (CatBoost + logistic), and a label noise che
 - the label noise check flagged ~283 samples (almost 19% of train) as likely mislabeled
 - oxygen_level is by far the most important feature, then age and body_temp
 - dry_cough, shortness_of_breath, and loss_of_smell have the strongest signal among symptoms
-- comorbidity is missing for 53% of rows but we can just treat that as its own category
+- comorbidity is NaN for 53% of rows but thats just patients with no comorbidity -- we fill with "None" and treat it as a regular category
 - class balance is pretty much 50/50 so thats not an issue
 
 ## the big thing: label noise
