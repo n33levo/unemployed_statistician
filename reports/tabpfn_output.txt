@@ -1,0 +1,12 @@
+Columns after One-Hot Encoding: ['id', 'age', 'fever', 'dry_cough', 'sore_throat', 'fatigue', 'headache', 'shortness_of_breath', 'loss_of_smell', 'loss_of_taste', 'oxygen_level', 'body_temperature', 'travel_history', 'contact_with_patient', 'chest_pain', 'covid_result', 'gender_Female', 'gender_Male', 'comorbidity_Asthma', 'comorbidity_Diabetes', 'comorbidity_Heart Disease', 'comorbidity_None']
+============================================================
+TabPFN CLASSIFIER
+============================================================
+Fold 1: Accuracy = 0.7667
+Fold 2: Accuracy = 0.7633
+Fold 3: Accuracy = 0.7733
+Fold 4: Accuracy = 0.7667
+Fold 5: Accuracy = 0.7300
+
+Overall TabPFN Cross-Validation Accuracy: 0.7600
+Overall TabPFN Cross-Validation Std Dev: 0.0153

@@ -10,6 +10,7 @@ from sklearn.model_selection import cross_val_score
 
 train = pd.read_csv(TRAIN_PATH)
 test = pd.read_csv(TEST_PATH)
+train["comorbidity"] = train["comorbidity"].fillna("None")  # Fill missing values in 'comorbidity' with "None"
 
 def pre_process(train):
     """
@@ -50,5 +51,5 @@ def tabpfn_classifier(train):
 
 if __name__ == "__main__":
     new_train = pre_process(train)
-    print(new_train.head())
+    print(f"Columns after One-Hot Encoding: {new_train.columns.tolist()}")
     tabpfn_classifier(new_train)
