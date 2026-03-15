@@ -1,0 +1,30 @@
+============================================================
+CATBOOST + OPTUNA RESULTS
+============================================================
+
+best parameters:
+- learning_rate: 0.0064501202032728215
+- depth: 4
+- l2_leaf_reg: 4.117754138237092
+- iterations: 1000
+- verbose: 0
+- allow_writing_files: False
+
+------------------------------
+
+- accuracy: 0.7547
+- AUC: 0.8139
+- logloss: 0.5334
+
+--- CatBoost feature importance (last fold) ---
+- oxygen_level                    20.37
+- dry_cough                       15.93
+- contact_with_patient            13.76
+- loss_of_smell                   11.25
+- shortness_of_breath              9.81
+- comorbidity                      8.05
+- fever                            7.49
+- body_temperature                 4.37
+- age                              4.01
+- travel_history                   1.16
+- gender                           1.14
