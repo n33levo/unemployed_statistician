@@ -10,8 +10,6 @@ from config import (TRAIN_PATH, TEST_PATH, ID_COL, TARGET_COL, NUM_COLS, SYMPTOM
 # Read Train and Test data
 train = pd.read_csv(TRAIN_PATH)
 test = pd.read_csv(TEST_PATH)
-samplesub = pd.read_csv(SAMPLE_SUB_PATH)
-test = pd.merge(test, samplesub, on=ID_COL)
 
 
 # Remove NA and set indicators
@@ -53,9 +51,3 @@ pipeline.fit(X_train, Y_train)
 model = pipeline.named_steps["model"]
 scaler = pipeline.named_steps["scaler"]
 Y_predict = pipeline.predict(X_test)
-print("=" * 60)
-print("MODEL FITTING AGAINST TEST DATA")
-print("=" * 60)
-print(f"Accuracy: {accuracy_score(Y_test, Y_predict)}")
-print("-" * 60)
-print(classification_report(Y_test, Y_predict))
