@@ -5,3 +5,4 @@ catboost
 cleanlab
 matplotlib
 seaborn
+tabpfn

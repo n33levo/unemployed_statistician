@@ -35,6 +35,7 @@ warnings.filterwarnings("ignore", category=UserWarning)
 import numpy as np
 import pandas as pd
 from catboost import CatBoostClassifier
+from tabpfn import TabPFNClassifier
 from cleanlab.filter import find_label_issues
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
@@ -47,6 +48,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from config import ID_COL, TARGET_COL, TRAIN_PATH, SEED
+from scripts.tabpfn_classifier import pre_process
 
 
 # ── Feature engineering ──────────────────────────────────────────────────────
@@ -254,6 +256,7 @@ def main() -> None:
     oof_tiered_lr = np.zeros(n, dtype=float)
     oof_tiered_cb = np.zeros(n, dtype=float)
     oof_ref = np.zeros(n, dtype=float)
+    oof_tabpfn = np.zeros(n, dtype=float)
 
     for fold, (tr_idx, va_idx) in enumerate(outer_cv.split(X_df, y_all), start=1):
         fold_tiers = tiers_arr[tr_idx]
@@ -290,6 +293,17 @@ def main() -> None:
         )
         cb_fold.fit(X_tr_cb.values, y_tr_corr, sample_weight=sw)
         oof_tiered_cb[va_idx] = cb_fold.predict_proba(X_va_cb.values)[:, 1]
+        
+        # # TabPFN
+        # print(f"  fold {fold}: training TabPFN with corrected labels...")
+        # X_tr_tab = X_df.iloc[tr_idx].copy()
+        # X_va_tab = X_df.iloc[va_idx].copy()        
+        # X_tr_tab = pre_process(X_tr_tab)
+        # X_va_tab = pre_process(X_va_tab)
+
+        # clf = TabPFNClassifier(random_state=42, device="cpu", ignore_pretraining_limits=True)
+        # clf.fit(X_tr_tab, y_tr_corr)
+        # oof_tabpfn[va_idx] = clf.predict_proba(X_va_tab)[:, 1]
 
         # Reference: LR with original labels (no correction)
         lr_ref = LogisticRegression(max_iter=2500, C=0.25, random_state=SEED)
@@ -312,6 +326,7 @@ def main() -> None:
     report("logreg_tiered", oof_tiered_lr)
     report("catboost_tiered", oof_tiered_cb)
     report("logreg_ref (no correction)", oof_ref)
+    # report("TabPFN_tiered", oof_tabpfn)
 
     # ── Save tier assignments ─────────────────────────────────────────────────
     output = {
