@@ -1,0 +1,77 @@
+Using T1+T2 corrected labels (215 + 81 = 296 corrections)
+
+============================================================
+SEED = 42
+============================================================
+  Fold 1: accuracy = 0.9567
+  Fold 2: accuracy = 0.9600
+  Fold 3: accuracy = 0.9367
+  Fold 4: accuracy = 0.9400
+  Fold 5: accuracy = 0.9400
+  OOF accuracy: 0.9467
+
+============================================================
+SEED = 123
+============================================================
+  Fold 1: accuracy = 0.9567
+  Fold 2: accuracy = 0.9600
+  Fold 3: accuracy = 0.9333
+  Fold 4: accuracy = 0.9367
+  Fold 5: accuracy = 0.9400
+  OOF accuracy: 0.9453
+
+============================================================
+SEED = 314
+============================================================
+  Fold 1: accuracy = 0.9600
+  Fold 2: accuracy = 0.9600
+  Fold 3: accuracy = 0.9333
+  Fold 4: accuracy = 0.9400
+  Fold 5: accuracy = 0.9400
+  OOF accuracy: 0.9467
+
+============================================================
+SEED = 777
+============================================================
+  Fold 1: accuracy = 0.9600
+  Fold 2: accuracy = 0.9600
+  Fold 3: accuracy = 0.9333
+  Fold 4: accuracy = 0.9367
+  Fold 5: accuracy = 0.9433
+  OOF accuracy: 0.9467
+
+============================================================
+SEED = 2026
+============================================================
+  Fold 1: accuracy = 0.9600
+  Fold 2: accuracy = 0.9600
+  Fold 3: accuracy = 0.9367
+  Fold 4: accuracy = 0.9367
+  Fold 5: accuracy = 0.9433
+  OOF accuracy: 0.9473
+
+============================================================
+MULTI-SEED AVERAGE RESULTS
+============================================================
+Average OOF accuracy (vs corrected labels): 0.9460
+Average OOF accuracy (vs original noisy): 0.7713
+
+Threshold sweep on averaged OOF probs:
+  threshold=0.31, accuracy=0.9507
+  threshold=0.32, accuracy=0.9507
+  threshold=0.33, accuracy=0.9507
+  threshold=0.30, accuracy=0.9500
+  threshold=0.29, accuracy=0.9493
+
+Best threshold: 0.31, accuracy: 0.9507
+
+Average ensemble predictions: 1654 zeros, 1846 ones (52.7% positive)
+Saved → /Users/neelmac1/Documents/STA314/after_98/scripts/../submissions/s4_multiseed_t1t2.csv
+
+Diffs vs S1 (T1 baseline): 65
+Diffs vs S3 (T1+T2 single seed): 51
+Diffs S1 vs S3: 48
+
+============================================================
+S4 DONE
+============================================================
