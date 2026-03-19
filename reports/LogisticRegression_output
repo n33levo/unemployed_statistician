@@ -1,14 +1,15 @@
 ============================================================
 CROSS VALIDATION SUMMARY
 ============================================================
-  Fold 1 Accuracy: 0.7133
-  Fold 2 Accuracy: 0.7133
-  Fold 3 Accuracy: 0.7606
-  Fold 4 Accuracy: 0.7324
-  Fold 5 Accuracy: 0.7113
+  Fold 1 Accuracy: 0.7400
+  Fold 2 Accuracy: 0.7500
+  Fold 3 Accuracy: 0.7100
+  Fold 4 Accuracy: 0.7200
+  Fold 5 Accuracy: 0.7700
 ------------------------------------------------------------
-Mean Accuracy:  0.7262
-Std Deviation:  0.0188
-Precision:      0.7302
-Recall:         0.7262
-AUC:            0.7902
+Mean Accuracy:  0.7380
+Std Deviation:  0.0214
+Precision:      0.7399
+Recall:         0.7380
+AUC:            0.8072
+Log-loss:       0.5398
