@@ -52,7 +52,7 @@
 \begin{column}{0.48\textwidth}
   \textbf{The catch}
   \begin{itemize}
-    \item The instructor \textit{deliberately flipped} a subset of training labels
+    \item We were told a subset of training labels had been \textit{deliberately flipped}
     \item Roughly \textbf{19\% of labels are wrong}
     \item Models trained on noisy labels plateaued at 74\% to 80\%
     \item Scored on \textbf{accuracy}: you get the label right or you do not
@@ -76,7 +76,7 @@
     \item \texttt{oxygen\_level} dominates (importance $\approx$ 18)
     \item \texttt{age} and \texttt{body\_temperature} are next
     \item Key symptoms: \texttt{dry\_cough}, \texttt{shortness\_of\_breath}, \texttt{loss\_of\_smell}
-    \item Many binary features contribute $<$ 5\% each but collectively matter
+    \item Many binary features contribute under 5\% each but collectively matter
   \end{itemize}
   }
 \end{column}
@@ -126,7 +126,7 @@
 % ============================================================
 \begin{frame}{What is TabPFN?}
 
-\textbf{TabPFN} (Hollmann et al., 2022) is a transformer \textit{meta-trained} on millions of synthetic tabular classification datasets.
+\textbf{TabPFN} (Hollmann et al., 2022) is a transformer \textit{meta-trained} (trained to learn from new tasks) on millions of synthetic tabular classification datasets.
 
 \vspace{0.3em}
 \begin{columns}[T]
@@ -160,17 +160,17 @@ Binary classification is the natural sweet spot for TabPFN. The prior was meta-t
 Instead of relying on any single noise detection technique, we ran three methods that use \textit{completely different} signals and combined their outputs.
 
 \vspace{0.5em}
-\textbf{Method 1: Confident Learning (Cleanlab).}\\
+\textbf{Method 1: Confident Learning (Cleanlab).} \textit{Probabilistic.}\\
 5-fold OOF logistic regression $\to$ Cleanlab estimates joint distribution of noisy vs.\ true labels.\\
 Flagged \textbf{285} samples (19.0\%).
 
 \vspace{0.4em}
-\textbf{Method 2: Area Under the Margin (AUM, CatBoost).}\\
+\textbf{Method 2: Area Under the Margin (AUM, CatBoost).} \textit{Margin-based.}\\
 Compute margin $m_i(t) = P_t(\text{true class}) - P_t(\text{other class})$ at 5 CatBoost checkpoints (100 to 500 iters).\\
 Samples with mean AUM $< 0.40$ are consistently hard-to-learn. Flagged \textbf{352} samples.
 
 \vspace{0.4em}
-\textbf{Method 3: Dataset Cartography.}\\
+\textbf{Method 3: Dataset Cartography.} \textit{Training-dynamics.}\\
 5 seeds $\times$ 5 folds of LR $\to$ mean per-sample confidence $P(\text{true label})$.\\
 Hard-to-learn threshold: mean confidence $< 0.45$. Flagged \textbf{302} samples.
 
