@@ -126,30 +126,40 @@
 % ============================================================
 \begin{frame}{What is TabPFN?}
 
+{\footnotesize
 \textbf{TabPFN} (Hollmann et al., 2022) is a transformer \textit{meta-trained} (trained to learn from new tasks) on millions of synthetic tabular classification datasets.
+}
 
-\vspace{0.3em}
-\begin{columns}[T]
-\begin{column}{0.55\textwidth}
+\vspace{0.05em}
+\begin{columns}[T,onlytextwidth]
+\begin{column}{0.38\textwidth}
+  {\footnotesize
   \textbf{How it works}
   \begin{itemize}
+    \setlength{\topsep}{0.2em}
+    \setlength{\itemsep}{0.2em}
     \item The entire training set is fed as \textit{context} in a single forward pass, similar to prompting an LLM
     \item Predictions via \textbf{in-context learning}: no gradient updates, no fine-tuning on your data
-    \item Approximates the Bayesian posterior predictive:\\$P(y_{\text{test}} \mid X_{\text{test}},\, X_{\text{train}},\, y_{\text{train}})$
+    \item Approximates the Bayesian posterior \mbox{predictive: $P(y_{\text{test}} \mid X_{\text{test}},\, X_{\text{train}},\, y_{\text{train}})$}
   \end{itemize}
+  }
 \end{column}
-\begin{column}{0.42\textwidth}
-  \textbf{Why it fits our task}
-  \begin{enumerate}
-    \item \textbf{Pre-training = regularisation.} Cannot overfit to 1{,}500 rows since it never trains on them via gradient descent
-    \item \textbf{Noise robustness.} Bayesian posterior smooths over individual flipped labels
-    \item \textbf{No hyperparameters.} Zero risk of overfitting to CV folds
-  \end{enumerate}
+\begin{column}{0.59\textwidth}
+  \centering
+  \includegraphics[width=\textwidth, height=0.46\textheight, keepaspectratio]{figures/meme.png}
 \end{column}
 \end{columns}
 
-\vspace{0.3em}
-Binary classification is the natural sweet spot for TabPFN. The prior was meta-trained heavily on 2-class tasks, and the output space (a single probability) is simple and well-calibrated.
+\vspace{0.15em}
+{\footnotesize
+\textbf{Why it fits our task}
+
+\parbox[t]{0.29\textwidth}{\textbf{1. Pre-training = regularisation}\\Cannot overfit to 1{,}500 rows since it never trains on them via gradient \mbox{descent}}
+\hfill
+\parbox[t]{0.37\textwidth}{\textbf{2. Noise robustness}\\Bayesian posterior smooths over \mbox{individual flipped labels}}
+\hfill
+\parbox[t]{0.27\textwidth}{\textbf{3. No hyperparameters}\\Zero risk of overfitting to CV folds}
+}
 \end{frame}
 
 % ============================================================
